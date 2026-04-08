@@ -71,6 +71,22 @@ node scripts/personal/users/update/index.js -id=abc-123-uuid -fn=Jane -ln=Smith
 
 ---
 
+### `scripts/personal/bank/sbi/`
+
+#### Merge Monthly Statements
+
+Merges 12 monthly SBI Excel statements (April–March) into a single FY file.
+
+Place your monthly `.xlsx` files in `scripts/personal/bank/sbi/monthly/`.
+
+```bash
+node scripts/personal/bank/sbi/merge.js
+```
+
+No flags required. Output: `scripts/personal/bank/sbi/monthly/SBI_FY_2025_26.xlsx`
+
+---
+
 ## Logs
 
 Each script creates a log file in its own `logs/` directory on every run:
@@ -99,12 +115,16 @@ scripts/
 │   ├── pg-client.js             # Direct Postgres client (pg Pool)
 │   └── logger.js                # Shared logger (tees output to log files)
 └── scripts/
-    ├── personal/
-    │   └── users/
-    │       ├── list-users/
-    │       │   └── index.js
-    │       ├── new/
-    │       │   └── index.js
-    │       └── update/
-    │           └── index.js
+    └── personal/
+        ├── users/
+        │   ├── list-users/
+        │   │   └── index.js
+        │   ├── new/
+        │   │   └── index.js
+        │   └── update/
+        │       └── index.js
+        └── bank/
+            └── sbi/
+                ├── merge.js
+                └── monthly/       # place .xlsx files here
 ```
